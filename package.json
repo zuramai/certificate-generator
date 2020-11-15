@@ -1,0 +1,35 @@
+{
+  "name": "certificate-generator",
+  "version": "1.0.0",
+  "private": true,
+  "scripts": {
+    "dev": "nuxt",
+    "build": "nuxt build",
+    "start": "nuxt start",
+    "generate": "nuxt generate",
+    "test": "jest"
+  },
+  "dependencies": {
+    "@nuxtjs/axios": "^5.12.2",
+    "core-js": "^3.6.5",
+    "nuxt": "^2.14.6",
+    "sass-loader": "^10.1.0",
+    "vuesax": "^4.0.1-alpha.25"
+  },
+  "devDependencies": {
+    "@fortawesome/free-brands-svg-icons": "^5.15.1",
+    "@fortawesome/free-solid-svg-icons": "^5.15.1",
+    "@nuxtjs/fontawesome": "^1.1.2",
+    "@nuxtjs/google-fonts": "^1.2.0",
+    "@nuxtjs/tailwindcss": "^3.2.0",
+    "@vue/test-utils": "^1.1.0",
+    "babel-core": "7.0.0-bridge.0",
+    "babel-jest": "^26.5.0",
+    "eslint-config-prettier": "^6.12.0",
+    "eslint-plugin-prettier": "^3.1.4",
+    "jest": "^26.5.0",
+    "node-sass": "^5.0.0",
+    "prettier": "^2.1.2",
+    "vue-jest": "^3.0.4"
+  }
+}

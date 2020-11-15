@@ -1,0 +1,21 @@
+.step-header {
+    padding-left: 2rem;
+    position: relative;
+    &:before {
+        content: '';
+        position: absolute;
+        left: -1rem;
+        top: 50%;
+        box-shadow: 0 10px 15px -3px  rgba(#7441d4, .5);
+        transform: translateY(-50%);
+        width: 1rem;        
+        height: 1rem;        
+        background: linear-gradient(to right, #4A00E0, #7441d4); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+        border-radius: 50%;
+    }
+}
+
+canvas#editor {
+    width: 100%;
+    max-width: 100%;
+}

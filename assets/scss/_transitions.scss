@@ -1,0 +1,9 @@
+.loading-page-enter-active,.loading-page-leave-active {
+    transition: all .2s;
+}
+.loading-page-enter, .loading-page-leave-to {
+    opacity: 0;
+}
+.loading-page-enter-to, .loading-page-leave {
+    opacity: 1;
+}

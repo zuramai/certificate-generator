@@ -1,0 +1,15 @@
+* {
+    font-family: 'Poppins';
+}
+h1,h2,h3,h4,h5,h6 {
+    font-family: 'Poppins';
+}
+
+// Button
+@import "./components/buttons";
+
+// Navbar
+@import "./components/navbar";
+
+// Transitions
+@import "./transitions";
