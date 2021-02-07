@@ -5,6 +5,12 @@ h1,h2,h3,h4,h5,h6 {
     font-family: 'Poppins';
 }
 
+// Variables
+@import "./variables";
+
+// Layout
+@import "./layout";
+
 // Button
 @import "./components/buttons";
 
@@ -13,3 +19,6 @@ h1,h2,h3,h4,h5,h6 {
 
 // Transitions
 @import "./transitions";
+
+// Utilities
+@import "./utilities/colors";

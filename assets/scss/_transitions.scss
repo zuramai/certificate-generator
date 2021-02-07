@@ -7,3 +7,13 @@
 .loading-page-enter-to, .loading-page-leave {
     opacity: 1;
 }
+
+.opacity-enter-active, .opacity-leave-active {
+    transition: all .5s ease-out;
+}
+.opacity-enter, .opacity-leave-to {
+    opacity: 0
+}
+.opacity-enter-to, .opacity-leave {
+    opacity: .8
+}

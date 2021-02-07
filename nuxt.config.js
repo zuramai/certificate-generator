@@ -17,13 +17,11 @@ export default {
 
   // Global CSS (https://go.nuxtjs.dev/config-css)
   css: [
-    'vuesax/dist/vuesax.css',
     '@/assets/scss/app.scss'
   ],
 
   // Plugins to run before rendering page (https://go.nuxtjs.dev/config-plugins)
   plugins: [
-    '@/plugins/vuesax'
   ],
 
   // Auto import components (https://go.nuxtjs.dev/config-components)
@@ -53,6 +51,9 @@ export default {
     icons: {
       solid: ['faUpload','faChevronRight', 'faDownload', 'faHeart'],
     },
+  },
+  tailwindcss: {
+    configPath: '~/tailwind.config.js'
   },
   // Axios module configuration (https://go.nuxtjs.dev/config-axios)
   axios: {},
