@@ -4,21 +4,68 @@
         </div>
         <svg xmlns="http://www.w3.org/2000/svg" class='main-svg'>
             <g v-for="(element, index) in elements" :key="index">
-                <text :x="element.position.x" 
-                    :y="element.position.y"
-                    >
-                    {{element.text.content}}
-                </text>
-                <g id="box">
-                    <rect :width="element.size.width" 
-                        :height="element.size.height" 
-                        :stroke="element.style.stroke.color" 
-                        :stroke-width="element.style.stroke.width"
-                        :fill="element.style.fill" 
-                        :x="element.position.x" 
-                        :y="element.position.y  - element.size.height"></rect>
-                </g>
+                <template v-if="element.type == 'text'">
+                    <g @click="setActiveElement(index)" @mouseenter="" :style="{cursor: 'move'}">
+                        <text :x="element.position.x" 
+                            :y="element.position.y"
+                            >
+                            {{element.text.content}}
+                        </text>
+                        <g id="box">
+                            <rect :width="element.size.width" 
+                                :height="element.size.height" 
+                                v-bind:stroke="element.stroke.color" 
+                                :stroke-width="element.stroke.width"
+                                :fill="element.style.fill" 
+                                :x="element.position.x" 
+                                :y="element.position.y - element.size.height"></rect>
+                        </g>
+                    </g>
+                </template>
             </g>
+            <template v-if="activeElements.length > 0">
+                <g id="controls" v-for="(activeElement,index) in activeElements" :key="`control-${index}`">
+                    <g>
+                        <!-- Top Left -->
+                        <image :x="activeElement.position.x - 15"
+                            :y="activeElement.position.y - activeElement.size.height - 15"
+                            xlink:href="data:image/svg+xml;base64,PCFET0NUWVBFIHN2ZyBQVUJMSUMgIi0vL1czQy8vRFREIFNWRyAxLjEvL0VOIiAiaHR0cDovL3d3dy53My5vcmcvR3JhcGhpY3MvU1ZHLzEuMS9EVEQvc3ZnMTEuZHRkIj48c3ZnIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyIgeG1sbnM6eGxpbms9Imh0dHA6Ly93d3cudzMub3JnLzE5OTkveGxpbmsiIHdpZHRoPSIxOHB4IiBoZWlnaHQ9IjE4cHgiIHZlcnNpb249IjEuMSI+PGNpcmNsZSBjeD0iOSIgY3k9IjkiIHI9IjUiIHN0cm9rZT0iI2ZmZiIgZmlsbD0iIzI5YjZmMiIgc3Ryb2tlLXdpZHRoPSIxIi8+PC9zdmc+"
+                            style="cursor:nwse-resize"
+                            @pointerdown="resize(index, $event)"
+                        />
+                    </g>
+                    <g>
+                        <image :x="activeElement.position.x - 15"
+                            :y="activeElement.position.y "
+                            xlink:href="data:image/svg+xml;base64,PCFET0NUWVBFIHN2ZyBQVUJMSUMgIi0vL1czQy8vRFREIFNWRyAxLjEvL0VOIiAiaHR0cDovL3d3dy53My5vcmcvR3JhcGhpY3MvU1ZHLzEuMS9EVEQvc3ZnMTEuZHRkIj48c3ZnIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyIgeG1sbnM6eGxpbms9Imh0dHA6Ly93d3cudzMub3JnLzE5OTkveGxpbmsiIHdpZHRoPSIxOHB4IiBoZWlnaHQ9IjE4cHgiIHZlcnNpb249IjEuMSI+PGNpcmNsZSBjeD0iOSIgY3k9IjkiIHI9IjUiIHN0cm9rZT0iI2ZmZiIgZmlsbD0iIzI5YjZmMiIgc3Ryb2tlLXdpZHRoPSIxIi8+PC9zdmc+"
+                            style="cursor:ne-resize"
+                            ></image>
+                    </g>
+                    <g>
+                        <image :x="activeElement.position.x + activeElement.size.width"
+                            :y="activeElement.position.y "
+                            xlink:href="data:image/svg+xml;base64,PCFET0NUWVBFIHN2ZyBQVUJMSUMgIi0vL1czQy8vRFREIFNWRyAxLjEvL0VOIiAiaHR0cDovL3d3dy53My5vcmcvR3JhcGhpY3MvU1ZHLzEuMS9EVEQvc3ZnMTEuZHRkIj48c3ZnIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyIgeG1sbnM6eGxpbms9Imh0dHA6Ly93d3cudzMub3JnLzE5OTkveGxpbmsiIHdpZHRoPSIxOHB4IiBoZWlnaHQ9IjE4cHgiIHZlcnNpb249IjEuMSI+PGNpcmNsZSBjeD0iOSIgY3k9IjkiIHI9IjUiIHN0cm9rZT0iI2ZmZiIgZmlsbD0iIzI5YjZmMiIgc3Ryb2tlLXdpZHRoPSIxIi8+PC9zdmc+"
+                            style="cursor:nwse-resize"
+                        ></image>
+                    </g>
+                    <g>
+                        <image :x="activeElement.position.x + activeElement.size.width"
+                            :y="activeElement.position.y - activeElement.size.height - 15"
+                            xlink:href="data:image/svg+xml;base64,PCFET0NUWVBFIHN2ZyBQVUJMSUMgIi0vL1czQy8vRFREIFNWRyAxLjEvL0VOIiAiaHR0cDovL3d3dy53My5vcmcvR3JhcGhpY3MvU1ZHLzEuMS9EVEQvc3ZnMTEuZHRkIj48c3ZnIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyIgeG1sbnM6eGxpbms9Imh0dHA6Ly93d3cudzMub3JnLzE5OTkveGxpbmsiIHdpZHRoPSIxOHB4IiBoZWlnaHQ9IjE4cHgiIHZlcnNpb249IjEuMSI+PGNpcmNsZSBjeD0iOSIgY3k9IjkiIHI9IjUiIHN0cm9rZT0iI2ZmZiIgZmlsbD0iIzI5YjZmMiIgc3Ryb2tlLXdpZHRoPSIxIi8+PC9zdmc+"
+                            style="cursor:ne-resize"
+                        />
+                    </g>
+                    <!-- <g>
+                        <rect :width="activeElement.size.width" 
+                            :height="activeElement.size.height" 
+                            v-bind:stroke="activeElement.stroke.color" 
+                            :stroke-width="activeElement.stroke.width"
+                            :fill="activeElement.style.fill" 
+                            :x="activeElement.position.x" 
+                            :y="activeElement.position.y - activeElement.size.height"></rect>
+                    </g> -->
+                </g>
+            </template>
         </svg>
     </div>
 </template>
@@ -32,6 +79,15 @@ export default {
         isMounted: false
     }),
     methods: {
+        toggleElementHover() {
+
+        },
+        resize(event, indexEl) {
+
+        },
+        setActiveElement(index) {
+            this.$store.commit('editor/setActiveElement',index)
+        },
         zoomCanvas($event) {
             let editor = this.$refs.editor;
 
@@ -69,6 +125,7 @@ export default {
     computed: {
         // Get current template image
         ...mapGetters({
+            activeElements: 'editor/activeElements',
             elements: 'editor/elements',
             templateImage:'editor/templateImage',
             templateImageStyle:'editor/templateImageStyle'

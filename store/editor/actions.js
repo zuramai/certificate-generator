@@ -14,6 +14,8 @@ export default {
      * @returns {string} 
      */
     addElement({commit},type) {
+        commit('clearActiveElements');
+        
         if(type == 'text') {
             commit('addElement', {
                 type: 'text',

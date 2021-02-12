@@ -29,5 +29,8 @@ export default {
     },
     elements(state) {
         return state.elements
+    },
+    activeElements(state) {
+        return state.elements.filter((e) => e.active)
     }
 }

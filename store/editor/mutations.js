@@ -2,15 +2,22 @@ export default {
     changeTemplate(state, template) {
         state.template = template;
     },
+    clearActiveElements(state) {
+        state.elements.forEach(el => {
+            el.active = false
+        });
+    },
     addElement(state, element) {
       
         // Options that every element have
         element = {
             ...element,
+            active: true,
             position: {
                 x: 100,
                 y: 100,
-            },  stroke: {
+            },  
+            stroke: {
                 show: false,
                 color: 'black',
                 type: 'solid',
@@ -30,5 +37,8 @@ export default {
         }
 
         state.elements.push(element)
+    },
+    setActiveElement(state, indexEl) {
+        state.elements[indexEl].active = true;
     }
 }
