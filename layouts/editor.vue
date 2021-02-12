@@ -1,5 +1,5 @@
 <template>
-    <div id="editor-page">
+    <div id="editor-page overflow-hidden">
         <editor-navbar></editor-navbar>
         <div class="editor-page-main bg-gray-100 h-screen">
             <editor-sidebar></editor-sidebar>

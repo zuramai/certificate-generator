@@ -6,5 +6,6 @@ export default () => ({
             src: '1.png',
             name: 'Devover Certificate'
         }
-    ]
+    ],
+    elements: []
 })

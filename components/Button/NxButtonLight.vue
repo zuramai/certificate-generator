@@ -1,5 +1,5 @@
 <template>
-    <button class="bg-transparent focus:outline-none hover:bg-gray-200 rounded-sm transition duration-200 px-2 py-1">
+    <button class="bg-transparent focus:outline-none hover:bg-gray-200 rounded-sm transition duration-200 px-2 py-1" @click="$emit('click')">
         <slot/>
     </button>
 </template>
